@@ -6,6 +6,8 @@ import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { useT } from '@/app/i18n/client';
+
 import { loginWithEmail, loginWithGoogle } from './api';
 import {
 	AcceptTermsCheckbox,
@@ -31,6 +33,7 @@ const loginSchema = z.object({
 type FormType = z.infer<typeof loginSchema>;
 
 export function LoginPage() {
+	const { t } = useT();
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const {
 		register,
@@ -100,7 +103,7 @@ export function LoginPage() {
 									/>
 								</Stack>
 								<ForgotPasswordLink href='/auth/reset-password'>
-									FORGOT PASSWORD?
+									{t('forgot-password')}
 								</ForgotPasswordLink>
 								<FormControlLabel
 									control={
@@ -111,7 +114,7 @@ export function LoginPage() {
 											}
 										/>
 									}
-									label='I accept the terms and conditions'
+									label={t('accept-terms')}
 								/>
 								<AuthCardActionContainer>
 									<LoginButton
@@ -122,9 +125,9 @@ export function LoginPage() {
 										disabled={!hasAcceptedTerms}
 										loading={isSubmitting}
 									>
-										LOGIN
+										{t('login')}
 									</LoginButton>
-									<div>Or</div>
+									<div>{t('or')}</div>
 									<SSOButton
 										disabled={!hasAcceptedTerms}
 										variant='outlined'
@@ -133,7 +136,7 @@ export function LoginPage() {
 										loading={isSubmitting}
 										onClick={handleLoginWithGoogle}
 									>
-										<GoogleIcon /> LOGIN WITH GOOGLE
+										<GoogleIcon /> {t('login-with-google')}
 									</SSOButton>
 								</AuthCardActionContainer>
 							</form>

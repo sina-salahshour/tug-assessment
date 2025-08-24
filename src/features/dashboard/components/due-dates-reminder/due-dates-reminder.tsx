@@ -1,6 +1,8 @@
 import { Typography } from '@mui/material';
 import { useMemo } from 'react';
 
+import { useT } from '@/app/i18n/client';
+
 import type { DueDatesData } from '../../types';
 import {
 	DueDatesContainer,
@@ -13,38 +15,39 @@ export interface DueDatesReminderProps {
 	data: DueDatesData[];
 }
 export function DueDatesReminder(props: DueDatesReminderProps) {
+	const { t } = useT();
 	const gridCells = useMemo(() => {
 		return [
 			{
-				label: 'Renewed',
+				label: t('reminders.renewed'),
 				value: props.data.filter((item) => item.tag === 'renew').length,
 			},
 			{
-				label: 'Insurance',
+				label: t('reminders.insurance'),
 				value: props.data.filter((item) => item.type === 'insurance').length,
 			},
 			{
-				label: 'Puspakom Service',
+				label: t('reminders.puspakom-service'),
 				value: props.data.filter((item) => item.type === 'puspakom-service')
 					.length,
 			},
 			{
-				label: 'Road Tax',
+				label: t('reminders.road-tax'),
 				value: props.data.filter((item) => item.type === 'road-tax').length,
 			},
 			{
-				label: 'Truck Permit',
+				label: t('reminders.truck-permit'),
 				value: props.data.filter((item) => item.type === 'truck-permit').length,
 			},
 			{
-				label: 'General',
+				label: t('reminders.general'),
 				value: props.data.filter((item) => item.type === 'general').length,
 			},
 		];
-	}, [props.data]);
+	}, [props.data, t]);
 	return (
 		<DueDatesContainer>
-			<DueDatesHeading>Reminder</DueDatesHeading>
+			<DueDatesHeading>{t('reminder')}</DueDatesHeading>
 			<DueDatesGrid>
 				{gridCells.map((cell) => (
 					<DueDatesGridItem key={cell.label}>

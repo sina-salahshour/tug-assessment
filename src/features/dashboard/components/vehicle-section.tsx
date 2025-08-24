@@ -1,29 +1,32 @@
 import { Button, Typography } from '@mui/material';
 
+import { useT } from '@/app/i18n/client';
+
 import { useVehicleStatisticsQuery } from '../api';
 import { HighlightedCard } from './highlighted-card/highlighted-card';
 
 export function VehicleSection() {
 	const { data, isLoading, refetch, isFetching } = useVehicleStatisticsQuery();
+	const { t } = useT();
 
 	if (isLoading) {
 		return (
 			<HighlightedCard.Skeleton variant='rectangular'>
 				<HighlightedCard>
-					<HighlightedCard.Heading>Vehicle</HighlightedCard.Heading>
+					<HighlightedCard.Heading>{t('vehicle')}</HighlightedCard.Heading>
 					<HighlightedCard.Content>
 						<HighlightedCard.ItemLarge>
 							<Typography component='h2'>.</Typography>
-							<Typography component='p'>Total no. of vehicles</Typography>
+							<Typography component='p'>{t('total-no-of-vehicles')}</Typography>
 						</HighlightedCard.ItemLarge>
 						<HighlightedCard.Separator />
 						<HighlightedCard.Item>
 							<Typography component='h2'>.</Typography>
-							<Typography component='p'>In Use</Typography>
+							<Typography component='p'>{t('in-use')}</Typography>
 						</HighlightedCard.Item>
 						<HighlightedCard.Item>
 							<Typography component='h2'>.</Typography>
-							<Typography component='p'>Unused</Typography>
+							<Typography component='p'>{t('unused')}</Typography>
 						</HighlightedCard.Item>
 					</HighlightedCard.Content>
 				</HighlightedCard>
@@ -33,10 +36,10 @@ export function VehicleSection() {
 	if (data == null) {
 		return (
 			<HighlightedCard>
-				<HighlightedCard.Heading>Vehicle</HighlightedCard.Heading>
+				<HighlightedCard.Heading>{t('vehicle')}</HighlightedCard.Heading>
 				<HighlightedCard.Content>
 					<HighlightedCard.ItemLarge>
-						Error while loading
+						{t('error-while-loading')}
 						<p>
 							<Button
 								loading={isFetching}
@@ -44,7 +47,7 @@ export function VehicleSection() {
 								variant='contained'
 								disableElevation
 							>
-								refetch
+								{t('refetch')}
 							</Button>
 						</p>
 					</HighlightedCard.ItemLarge>
@@ -54,20 +57,20 @@ export function VehicleSection() {
 	}
 	return (
 		<HighlightedCard>
-			<HighlightedCard.Heading>Driver</HighlightedCard.Heading>
+			<HighlightedCard.Heading>{t('driver')}</HighlightedCard.Heading>
 			<HighlightedCard.Content>
 				<HighlightedCard.ItemLarge>
 					<Typography component='h2'>{data.vehicleCount}</Typography>
-					<Typography component='p'>Total no. of vehicles</Typography>
+					<Typography component='p'>{t('total-no-of-vehicles')}</Typography>
 				</HighlightedCard.ItemLarge>
 				<HighlightedCard.Separator />
 				<HighlightedCard.Item>
 					<Typography component='h2'>{data.vehicleOnDutyCount}</Typography>
-					<Typography component='p'>In Use</Typography>
+					<Typography component='p'>{t('in-use')}</Typography>
 				</HighlightedCard.Item>
 				<HighlightedCard.Item>
 					<Typography component='h2'>{data.vehicleOffDutyCount}</Typography>
-					<Typography component='p'>Unused</Typography>
+					<Typography component='p'>{t('unused')}</Typography>
 				</HighlightedCard.Item>
 			</HighlightedCard.Content>
 		</HighlightedCard>

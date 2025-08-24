@@ -1,29 +1,32 @@
 import { Button, Typography } from '@mui/material';
 
+import { useT } from '@/app/i18n/client';
+
 import { useDriverStatisticsQuery } from '../api';
 import { HighlightedCard } from './highlighted-card/highlighted-card';
 
 export function DriverSection() {
+	const { t } = useT('dashboard');
 	const { data, isLoading, refetch, isFetching } = useDriverStatisticsQuery();
 
 	if (isLoading) {
 		return (
 			<HighlightedCard.Skeleton variant='rectangular'>
 				<HighlightedCard>
-					<HighlightedCard.Heading>Driver</HighlightedCard.Heading>
+					<HighlightedCard.Heading>{t('driver')}</HighlightedCard.Heading>
 					<HighlightedCard.Content>
 						<HighlightedCard.ItemLarge>
 							<Typography component='h2'>.</Typography>
-							<Typography component='p'>Total no. of drivers</Typography>
+							<Typography component='p'>{t('total-no-of-drivers')}</Typography>
 						</HighlightedCard.ItemLarge>
 						<HighlightedCard.Separator />
 						<HighlightedCard.Item>
 							<Typography component='h2'>.</Typography>
-							<Typography component='p'>On duty</Typography>
+							<Typography component='p'>{t('on-duty')}</Typography>
 						</HighlightedCard.Item>
 						<HighlightedCard.Item>
 							<Typography component='h2'>.</Typography>
-							<Typography component='p'>Off duty</Typography>
+							<Typography component='p'>{t('off-duty')}</Typography>
 						</HighlightedCard.Item>
 					</HighlightedCard.Content>
 				</HighlightedCard>
@@ -33,10 +36,10 @@ export function DriverSection() {
 	if (data == null) {
 		return (
 			<HighlightedCard>
-				<HighlightedCard.Heading>Driver</HighlightedCard.Heading>
+				<HighlightedCard.Heading>{t('driver')}</HighlightedCard.Heading>
 				<HighlightedCard.Content>
 					<HighlightedCard.ItemLarge>
-						Error while loading
+						{t('error-while-loading')}
 						<p>
 							<Button
 								loading={isFetching}
@@ -44,7 +47,7 @@ export function DriverSection() {
 								variant='contained'
 								disableElevation
 							>
-								refetch
+								{t('refetch')}
 							</Button>
 						</p>
 					</HighlightedCard.ItemLarge>
@@ -54,20 +57,20 @@ export function DriverSection() {
 	}
 	return (
 		<HighlightedCard>
-			<HighlightedCard.Heading>Driver</HighlightedCard.Heading>
+			<HighlightedCard.Heading>{t('driver')}</HighlightedCard.Heading>
 			<HighlightedCard.Content>
 				<HighlightedCard.ItemLarge>
 					<Typography component='h2'>{data.driverCount}</Typography>
-					<Typography component='p'>Total no. of drivers</Typography>
+					<Typography component='p'>{t('total-no-of-drivers')}</Typography>
 				</HighlightedCard.ItemLarge>
 				<HighlightedCard.Separator />
 				<HighlightedCard.Item>
 					<Typography component='h2'>{data.onDutyCount}</Typography>
-					<Typography component='p'>On duty</Typography>
+					<Typography component='p'>{t('on-duty')}</Typography>
 				</HighlightedCard.Item>
 				<HighlightedCard.Item>
 					<Typography component='h2'>{data.offDutyCount}</Typography>
-					<Typography component='p'>Off duty</Typography>
+					<Typography component='p'>{t('off-duty')}</Typography>
 				</HighlightedCard.Item>
 			</HighlightedCard.Content>
 		</HighlightedCard>

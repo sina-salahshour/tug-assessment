@@ -1,6 +1,8 @@
 import { Box } from '@mui/material';
 import { PieChart, type PieValueType } from '@mui/x-charts';
 
+import { useT } from '@/app/i18n/client';
+
 import { CardLegendItem } from './card-legend-item';
 import {
 	CardContent,
@@ -17,10 +19,11 @@ export interface DueDatesCardProps {
 	data: DueDateSerieType[];
 }
 export function DueDatesCard(props: DueDatesCardProps) {
+	const { t } = useT();
 	const totalSum = props.data.reduce((a, b) => a + b.value, 0);
 	return (
 		<DueDatesCardContainer>
-			<CardHeading>Due Dates</CardHeading>
+			<CardHeading>{t('due-dates')}</CardHeading>
 			<CardContent>
 				<PieChart
 					series={[
@@ -42,7 +45,7 @@ export function DueDatesCard(props: DueDatesCardProps) {
 				</Box>
 				<CardTotalContainer>
 					<CardTotalText>{totalSum.toLocaleString()}</CardTotalText>
-					<CardTotalDescription>Total Reminders</CardTotalDescription>
+					<CardTotalDescription>{t('total-reminders')}</CardTotalDescription>
 				</CardTotalContainer>
 			</CardContent>
 		</DueDatesCardContainer>

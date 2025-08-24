@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 
+import { useT } from '@/app/i18n/client';
+
 import { useDueDatesStatisticsQuery } from '../api';
 import {
 	DashboardRow,
@@ -17,6 +19,7 @@ const dueDateColorMap = {
 
 export function DueDatesSection() {
 	const { data } = useDueDatesStatisticsQuery();
+	const { t } = useT();
 
 	const processedData = useMemo(() => {
 		if (data == null) {
@@ -27,30 +30,29 @@ export function DueDatesSection() {
 				value: 0,
 				color: dueDateColorMap['overdue'],
 				id: 'overdue',
-				label: 'Overdue',
-				tooltip: 'Overdue dates refer to the dates vehicle has already expired',
+				label: t('duedates.overdue'),
+				tooltip: t('duedates.overdue-tooltip'),
 			},
 			scheduled: {
 				value: 0,
 				color: dueDateColorMap['scheduled'],
 				id: 'scheduled',
-				label: 'Scheduled',
-				tooltip: 'Scheduled dates refer to future dates vehicle will expire',
+				label: t('duedates.scheduled'),
+				tooltip: t('duedates.scheduled-tooltip'),
 			},
 			upcoming: {
 				value: 0,
 				color: dueDateColorMap['upcoming'],
 				id: 'upcoming',
-				label: 'Upcoming',
-				tooltip:
-					'Scheduled dates refer to future dates vehicle will expire soon',
+				label: t('duedates.upcoming'),
+				tooltip: t('duedates.upcoming-tooltip'),
 			},
 		};
 		data.forEach((item) => {
 			dueDates[item.situation].value += Number(item.count);
 		});
 		return Object.values(dueDates);
-	}, [data]);
+	}, [data, t]);
 
 	if (data == null) {
 		return (
