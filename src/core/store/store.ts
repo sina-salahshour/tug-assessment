@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 
+import { userReducer } from '@/core/store/slices/user-slice';
+
 export const store = configureStore({
-	reducer: {},
+	reducer: {
+		user: userReducer,
+	},
 	devTools: process.env.NODE_ENV === 'development',
 });
 
