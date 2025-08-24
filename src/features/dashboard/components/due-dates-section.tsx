@@ -1,7 +1,11 @@
 import { useMemo } from 'react';
 
 import { useDueDatesStatisticsQuery } from '../api';
-import { DashboardRow } from '../dashboard.styles';
+import {
+	DashboardRow,
+	DueDatesChartSkeleton,
+	DueDatesRemindersSkeleton,
+} from '../dashboard.styles';
 import { DueDatesCard } from './due-dates-card/due-dates-card';
 import { DueDatesReminder } from './due-dates-reminder/due-dates-reminder';
 
@@ -49,7 +53,12 @@ export function DueDatesSection() {
 	}, [data]);
 
 	if (data == null) {
-		return null;
+		return (
+			<DashboardRow>
+				<DueDatesChartSkeleton variant='rectangular' />
+				<DueDatesRemindersSkeleton variant='rectangular' />
+			</DashboardRow>
+		);
 	}
 
 	return (

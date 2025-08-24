@@ -22,3 +22,26 @@ export interface DueDatesData {
 	tag: null;
 	count: string;
 }
+
+export interface RecentSubmissionsData {
+	id: number;
+	lineNo: string;
+	session: {
+		driver: {
+			firstname: string;
+			lastname: string;
+		};
+		vehicle: {
+			plateNo: string;
+		};
+		startMileage: number;
+		endMileage: number;
+		startTime: number;
+	};
+}
+
+export interface RecentSubmissionsResponse {
+	count: number;
+	forms: RecentSubmissionsData[];
+	filter: unknown;
+}

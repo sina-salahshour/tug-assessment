@@ -6,6 +6,7 @@ import { useAppSelector } from '@/core/store/store';
 
 import { DriverSection } from './components/driver-section';
 import { DueDatesSection } from './components/due-dates-section';
+import { RecentSubmissionsSection } from './components/recent-submissions-section';
 import { VehicleSection } from './components/vehicle-section';
 import {
 	DashboardContainer,
@@ -26,6 +27,7 @@ export function DashboardPage() {
 				<VehicleSection />
 			</DashboardRow>
 			<DueDatesSection />
+			<RecentSubmissionsSection />
 		</DashboardContainer>
 	);
 }

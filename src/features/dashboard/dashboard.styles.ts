@@ -1,4 +1,4 @@
-import { Box, styled, Typography } from '@mui/material';
+import { Box, Skeleton, styled, Typography } from '@mui/material';
 
 export const DashboardGreetingWrapper = styled(Typography)({
 	fontWeight: '600',
@@ -20,4 +20,24 @@ export const DashboardContainer = styled(Box)({
 	flexDirection: 'column',
 	gap: '21px',
 	padding: '38px',
+});
+
+export const RowHeading = styled(Box)({
+	fontWeight: '600',
+	fontSize: '16px',
+	color: '#3C3C42',
+	paddingBlock: '12px',
+});
+
+export const DueDatesChartSkeleton = styled(Skeleton)({
+	minHeight: '249px',
+	maxWidth: 'none',
+	borderRadius: '8px',
+	flex: 1,
+});
+export const DueDatesRemindersSkeleton = styled(Skeleton)({
+	minHeight: '249px',
+	maxWidth: 'none',
+	borderRadius: '8px',
+	flex: 1,
 });
