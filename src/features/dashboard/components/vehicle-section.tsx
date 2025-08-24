@@ -33,7 +33,7 @@ export function VehicleSection() {
 	if (data == null) {
 		return (
 			<HighlightedCard>
-				<HighlightedCard.Heading>Driver</HighlightedCard.Heading>
+				<HighlightedCard.Heading>Vehicle</HighlightedCard.Heading>
 				<HighlightedCard.Content>
 					<HighlightedCard.ItemLarge>
 						Error while loading

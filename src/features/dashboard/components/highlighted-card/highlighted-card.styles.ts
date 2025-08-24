@@ -4,8 +4,8 @@ export const HighlightedCardContainer = styled(Box)({
 	backgroundImage: 'linear-gradient(to right, #0081AA, #00AA4F)',
 	borderRadius: '8px',
 	overflow: 'hidden',
-	maxWidth: '669px',
 	color: 'white',
+	flex: 1,
 });
 
 export const HighlightedCardHeading = styled(Box)({
@@ -26,6 +26,7 @@ export const HighlightedCardContent = styled(Box)({
 });
 
 export const HighlightedCardItem = styled(Box)({
+	flex: 1,
 	paddingTop: '19px',
 	paddingBottom: '25px',
 	width: '178px',
@@ -45,7 +46,7 @@ export const HighlightedCardItem = styled(Box)({
 	},
 });
 export const HighlightedCardItemLarge = styled(HighlightedCardItem)({
-	flex: 1,
+	flex: 2,
 });
 export const HighlightedCardSeparator = styled(Box)({
 	marginTop: '19px',
@@ -54,7 +55,7 @@ export const HighlightedCardSeparator = styled(Box)({
 	borderRight: '1px solid #D8D8D8',
 });
 export const CardSkeleton = styled(Skeleton)({
+	maxWidth: 'none',
 	borderRadius: '8px',
-	maxWidth: '669px',
-	width: '100%',
+	flex: 1,
 });
