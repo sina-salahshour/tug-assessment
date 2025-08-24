@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[992],{992:e=>{e.exports=JSON.parse('{"meta":{"title":"Tug Interview Assessment","description":"This is a simple assessment for Tug interview candidates."}}')}}]);
