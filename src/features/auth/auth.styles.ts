@@ -24,7 +24,6 @@ export const AuthCardContainer = styled(Box)({
 	paddingInline: '12px',
 });
 export const AuthCard = styled(Card)({
-	height: '574px',
 	minWidth: '0',
 	borderRadius: '8px',
 	paddingInline: '32px',
@@ -52,6 +51,7 @@ export const AuthInput = styled(TextField)({
 	borderRadius: '4px',
 	fontSize: '16px',
 	height: '48px',
+	transition: 'all 300ms',
 	[`& .MuiInputBase-input`]: {
 		padding: '12px',
 		height: '24px',
@@ -60,6 +60,9 @@ export const AuthInput = styled(TextField)({
 		'&::placeholder': {
 			color: '#3C3C42',
 		},
+	},
+	'&:has(.Mui-error)': {
+		marginBottom: '12px',
 	},
 });
 
