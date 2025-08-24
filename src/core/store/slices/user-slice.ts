@@ -6,10 +6,12 @@ import type { RootState } from '../store';
 
 interface UserState {
 	user: User | null;
+	idToken: string | null;
 }
 
 const initialState: UserState = {
 	user: null,
+	idToken: null,
 };
 
 const userSlice = createSlice({
@@ -22,9 +24,16 @@ const userSlice = createSlice({
 		clearUser: (state) => {
 			state.user = null;
 		},
+		setIdToken: (state, action: PayloadAction<string | null>) => {
+			state.idToken = action.payload;
+		},
+		clearIdToken: (state) => {
+			state.idToken = null;
+		},
 	},
 });
 
 export const selectUser = (state: RootState) => state.user.user;
+export const selectIdToken = (state: RootState) => state.user.user;
 export const userActions = userSlice.actions;
 export const userReducer = userSlice.reducer;

@@ -3,10 +3,15 @@ import { useDispatch, useSelector, useStore } from 'react-redux';
 
 import { userReducer } from '@/core/store/slices/user-slice';
 
+import { baseApi } from './slices/api';
+
 export const store = configureStore({
 	reducer: {
 		user: userReducer,
+		[baseApi.reducerPath]: baseApi.reducer,
 	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(baseApi.middleware),
 	devTools: process.env.NODE_ENV === 'development',
 });
 
