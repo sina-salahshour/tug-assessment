@@ -3,9 +3,12 @@ import type { NextConfig } from 'next';
 interface RuleSetRule {
 	test?: RegExp;
 }
-
+const isProd = process.env.NODE_ENV === 'production';
 const nextConfig: NextConfig = {
 	output: 'export',
+	images: { unoptimized: true },
+	basePath: isProd ? '/tug-assessment' : '',
+	assetPrefix: isProd ? '/tug-assessment/' : '',
 	/* just yanked from documentation 'https://react-svgr.com/docs/next/' */
 	webpack(config) {
 		const fileLoaderRule = config.module.rules.find((rule: RuleSetRule) =>
