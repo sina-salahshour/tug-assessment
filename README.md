@@ -45,5 +45,5 @@ You can run the command `fnm use` (or `nvm use`) for switching to the correct no
 For deploying to `Github Pages`, you need to specify your repositoy url in next.config.ts, then you can run the command:
 
 ```sh
-pnpm deploy
+pnpm run deploy
 ```
