@@ -83,7 +83,7 @@ export function LoginPage() {
 
 			try {
 				setIsSubmitting(true);
-				loginWithGoogle();
+				await loginWithGoogle();
 			} catch (err) {
 				const parsedErr = errorSchema.safeParse(err);
 				if (parsedErr.success) {
