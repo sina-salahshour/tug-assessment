@@ -90,7 +90,7 @@ export function LoginPage() {
 											errors.email?.message as 'email-validation-message',
 										)}
 										error={errors.email != null}
-										placeholder='Email *'
+										placeholder={t('email-required')}
 										required
 										variant='outlined'
 										{...register('email')}
@@ -100,7 +100,7 @@ export function LoginPage() {
 											errors.password?.message as 'password-validation-message',
 										)}
 										error={errors.password != null}
-										placeholder='Password *'
+										placeholder={t('password-required')}
 										required
 										variant='outlined'
 										{...register('password')}
