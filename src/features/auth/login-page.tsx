@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormControlLabel, Stack } from '@mui/material';
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import { useT } from '@/app/i18n/client';
@@ -32,6 +33,10 @@ const loginSchema = z.object({
 
 type FormType = z.infer<typeof loginSchema>;
 
+const errorSchema = z.object({
+	message: z.string(),
+});
+
 export function LoginPage() {
 	const { t } = useT('auth');
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,11 +57,22 @@ export function LoginPage() {
 			try {
 				setIsSubmitting(true);
 				await loginWithEmail(form.email, form.password);
+			} catch (err) {
+				const parsedErr = errorSchema.safeParse(err);
+				if (parsedErr.success) {
+					toast.error(
+						t('error-while-signing-in-reason', {
+							reason: parsedErr.data.message,
+						}),
+					);
+				} else {
+					toast.error(t('error-while-signing-in'));
+				}
 			} finally {
 				setIsSubmitting(false);
 			}
 		},
-		[hasAcceptedTerms],
+		[hasAcceptedTerms, t],
 	);
 
 	const handleLoginWithGoogle = useCallback(
@@ -68,11 +84,22 @@ export function LoginPage() {
 			try {
 				setIsSubmitting(true);
 				loginWithGoogle();
+			} catch (err) {
+				const parsedErr = errorSchema.safeParse(err);
+				if (parsedErr.success) {
+					toast.error(
+						t('error-while-signing-in-reason', {
+							reason: parsedErr.data.message,
+						}),
+					);
+				} else {
+					toast.error(t('error-while-signing-in'));
+				}
 			} finally {
 				setIsSubmitting(false);
 			}
 		},
-		[hasAcceptedTerms],
+		[hasAcceptedTerms, t],
 	);
 
 	return (

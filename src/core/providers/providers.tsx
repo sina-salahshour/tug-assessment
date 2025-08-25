@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 import { StoreProvider } from './store-provider';
 import SyncAuthUser from './sync-auth-user';
@@ -10,6 +11,7 @@ export function Providers(props: PropsWithChildren) {
 			<ThemeProvider>
 				{props.children}
 				<SyncAuthUser />
+				<Toaster />
 			</ThemeProvider>
 		</StoreProvider>
 	);
