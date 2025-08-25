@@ -19,7 +19,7 @@ export interface DueDatesCardProps {
 	data: DueDateSerieType[];
 }
 export function DueDatesCard(props: DueDatesCardProps) {
-	const { t } = useT();
+	const { t } = useT('dashboard');
 	const totalSum = props.data.reduce((a, b) => a + b.value, 0);
 	return (
 		<DueDatesCardContainer>

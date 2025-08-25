@@ -15,7 +15,7 @@ export interface DueDatesReminderProps {
 	data: DueDatesData[];
 }
 export function DueDatesReminder(props: DueDatesReminderProps) {
-	const { t } = useT();
+	const { t } = useT('dashboard');
 	const gridCells = useMemo(() => {
 		return [
 			{

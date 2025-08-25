@@ -7,7 +7,7 @@ import { HighlightedCard } from './highlighted-card/highlighted-card';
 
 export function VehicleSection() {
 	const { data, isLoading, refetch, isFetching } = useVehicleStatisticsQuery();
-	const { t } = useT();
+	const { t } = useT('dashboard');
 
 	if (isLoading) {
 		return (
@@ -57,7 +57,7 @@ export function VehicleSection() {
 	}
 	return (
 		<HighlightedCard>
-			<HighlightedCard.Heading>{t('driver')}</HighlightedCard.Heading>
+			<HighlightedCard.Heading>{t('vehicle')}</HighlightedCard.Heading>
 			<HighlightedCard.Content>
 				<HighlightedCard.ItemLarge>
 					<Typography component='h2'>{data.vehicleCount}</Typography>

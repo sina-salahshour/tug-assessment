@@ -19,7 +19,7 @@ const dueDateColorMap = {
 
 export function DueDatesSection() {
 	const { data } = useDueDatesStatisticsQuery();
-	const { t } = useT();
+	const { t } = useT('dashboard');
 
 	const processedData = useMemo(() => {
 		if (data == null) {
