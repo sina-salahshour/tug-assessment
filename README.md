@@ -39,3 +39,11 @@ For the dev server, Open [http://localhost:3000](http://localhost:3000) with you
 ### Using version manager
 
 You can run the command `fnm use` (or `nvm use`) for switching to the correct node version.
+
+## Deploying to Gh Pages
+
+For deploying to `Github Pages`, you need to specify your repositoy url in next.config.ts, then you can run the command:
+
+```sh
+pnpm deploy
+```

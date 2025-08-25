@@ -26,14 +26,14 @@ import {
 import { ReverseAuthGuard } from './components/reverse-auth-guard';
 
 const loginSchema = z.object({
-	email: z.email('email is not valid'),
-	password: z.string().min(1, 'password is required'),
+	email: z.email('email-validation-message'),
+	password: z.string().min(1, 'password-validation-message'),
 });
 
 type FormType = z.infer<typeof loginSchema>;
 
 export function LoginPage() {
-	const { t } = useT();
+	const { t } = useT('auth');
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const {
 		register,

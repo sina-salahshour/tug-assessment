@@ -6,7 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start --port 4000",
-		"lint": "next lint"
+		"lint": "next lint",
+		"deploy": "pnpm build && npx gh-pages --nojekyll -d out"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.14.0",
