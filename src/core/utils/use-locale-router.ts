@@ -13,7 +13,7 @@ function convertToLocalePath(lng: string, path: string) {
 	if (languages.includes(pathnameFirstSegment)) {
 		return path;
 	}
-	return `/${lng}/${path}`;
+	return `/${lng}${path}`;
 }
 
 export function useLocaleRouter() {

@@ -21,7 +21,7 @@ export function LocaleLink(props: LocaleLinkProps) {
 		if (languages.includes(pathnameFirstSegment)) {
 			return propsHref;
 		}
-		return `/${lng}/${propsHref}`;
+		return `/${lng}${propsHref}`;
 	}, [lng, propsHref]);
 
 	return <Link {...props} href={localeHref} />;
