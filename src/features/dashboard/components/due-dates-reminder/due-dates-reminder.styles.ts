@@ -25,6 +25,7 @@ export const DueDatesGridItem = styled(Box)({
 	alignItems: 'center',
 	justifyContent: 'center',
 	paddingBlock: '24px',
+	textAlign: 'center',
 
 	'& > h2': {
 		fontSize: '28px',

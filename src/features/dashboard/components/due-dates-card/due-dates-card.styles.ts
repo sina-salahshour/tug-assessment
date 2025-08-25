@@ -16,12 +16,16 @@ export const CardHeading = styled(Box)({
 	paddingInline: '18px',
 });
 
-export const CardContent = styled(Box)({
+export const CardContent = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	alignItems: 'center',
 	minHeight: '200px',
 	gap: '8px',
-});
+	[theme.breakpoints.down('md')]: {
+		flexDirection: 'column',
+		paddingBlock: '24px',
+	},
+}));
 
 export const CardTotalContainer = styled(Box)({
 	display: 'flex',

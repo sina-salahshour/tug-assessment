@@ -15,12 +15,16 @@ export const DashboardRow = styled(Box)(({ theme }) => ({
 	},
 }));
 
-export const DashboardContainer = styled(Box)({
+export const DashboardContainer = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	flexDirection: 'column',
 	gap: '21px',
 	padding: '38px',
-});
+	[theme.breakpoints.down('md')]: {
+		padding: '16px',
+		gap: '16px',
+	},
+}));
 
 export const RowHeading = styled(Box)({
 	fontWeight: '600',
