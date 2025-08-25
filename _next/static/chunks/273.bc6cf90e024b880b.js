@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[273],{273:s=>{s.exports=JSON.parse('{"forgot-password":"FORGOT PASSWORD?","accept-terms":"I accept the terms and conditions","login":"LOGIN","or":"Or","login-with-google":"LOGIN WITH GOOGLE","email-validation-message":"email is not valid","password-validation-message":"password is required"}')}}]);
