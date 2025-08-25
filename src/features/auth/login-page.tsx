@@ -86,7 +86,9 @@ export function LoginPage() {
 								<MockCardLogo>Logo</MockCardLogo>
 								<Stack gap={'18px'}>
 									<AuthInput
-										helperText={errors.email?.message}
+										helperText={t(
+											errors.email?.message as 'email-validation-message',
+										)}
 										error={errors.email != null}
 										placeholder='Email *'
 										required
@@ -94,7 +96,9 @@ export function LoginPage() {
 										{...register('email')}
 									/>
 									<AuthInput
-										helperText={errors.password?.message}
+										helperText={t(
+											errors.password?.message as 'password-validation-message',
+										)}
 										error={errors.password != null}
 										placeholder='Password *'
 										required
