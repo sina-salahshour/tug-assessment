@@ -20,28 +20,39 @@ export function DueDatesReminder(props: DueDatesReminderProps) {
 		return [
 			{
 				label: t('reminders.renewed'),
-				value: props.data.filter((item) => item.tag === 'renew').length,
+				value: props.data
+					.filter((item) => item.tag === 'renew')
+					.reduce((a, b) => a + Number(b.count), 0),
 			},
 			{
 				label: t('reminders.insurance'),
-				value: props.data.filter((item) => item.type === 'insurance').length,
+				value: props.data
+					.filter((item) => item.type === 'insurance')
+					.reduce((a, b) => a + Number(b.count), 0),
 			},
 			{
 				label: t('reminders.puspakom-service'),
-				value: props.data.filter((item) => item.type === 'puspakom-service')
-					.length,
+				value: props.data
+					.filter((item) => item.type === 'puspakom-service')
+					.reduce((a, b) => a + Number(b.count), 0),
 			},
 			{
 				label: t('reminders.road-tax'),
-				value: props.data.filter((item) => item.type === 'road-tax').length,
+				value: props.data
+					.filter((item) => item.type === 'road-tax')
+					.reduce((a, b) => a + Number(b.count), 0),
 			},
 			{
 				label: t('reminders.truck-permit'),
-				value: props.data.filter((item) => item.type === 'truck-permit').length,
+				value: props.data
+					.filter((item) => item.type === 'truck-permit')
+					.reduce((a, b) => a + Number(b.count), 0),
 			},
 			{
 				label: t('reminders.general'),
-				value: props.data.filter((item) => item.type === 'general').length,
+				value: props.data
+					.filter((item) => item.type === 'general')
+					.reduce((a, b) => a + Number(b.count), 0),
 			},
 		];
 	}, [props.data, t]);
