@@ -1,25 +1,24 @@
 'use client';
 import { type PropsWithChildren, useEffect } from 'react';
 
-import { selectUser } from '@/core/store/slices/user-slice';
+import { selectUser, selectUserLoading } from '@/core/store/slices/user-slice';
 import { useAppSelector } from '@/core/store/store';
 import { useLocaleRouter } from '@/core/utils/use-locale-router';
 
 export function AuthGuard(props: PropsWithChildren) {
+	const isUserLoading = useAppSelector(selectUserLoading);
 	const user = useAppSelector(selectUser);
 	const router = useLocaleRouter();
 	useEffect(() => {
-		let timeout: NodeJS.Timeout;
-
-		if (user == null) {
-			timeout = setTimeout(() => {
-				router.replace('/auth/login');
-			}, 750);
+		if (isUserLoading) {
+			return;
 		}
+		if (user == null) {
+			router.replace('/auth/login');
+		}
+	}, [isUserLoading, router, user]);
 
-		return () => clearTimeout(timeout);
-	}, [router, user]);
-
+	// can show loading fallback state when loading
 	if (user == null) {
 		return null;
 	}
